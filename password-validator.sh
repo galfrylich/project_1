@@ -5,7 +5,7 @@ len="${#password}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-
+fghgv
 while getopts "f" options; do
     case "${options}" in         
         f)                       
