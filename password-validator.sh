@@ -6,6 +6,15 @@ len="${#password}"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
+while getopts "f" options; do
+    case "${options}" in         
+        f)                       
+        echo "success"   
+        ;;
+        
+    esac
+done
+
 check_pass(){
     
     if [[ $len -ge 10 ]]
