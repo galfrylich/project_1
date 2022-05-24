@@ -6,7 +6,7 @@ len="${#password}"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
-
+jj
 check_pass(){
     
     if [[ $len -ge 10 ]]
