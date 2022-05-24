@@ -1,26 +1,16 @@
 #!/bin/bash    
 
-password=$1
-len="${#password}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-fghgv
-while getopts "f" options; do
-    case "${options}" in         
-        f)                       
-        echo "success"   
-        ;;
-        
-    esac
-done
 
 check_pass(){
-    
+    argument=$1
+    len="${#argument}"
     if [[ $len -ge 10 ]]
     then
-        if [[ $password =~ [[:alpha:]] && $password =~ [[:digit:]] ]]; then 
-            if [[ "$password" =~ [[:upper:]] ]] && [[ "$password" =~ [[:lower:]] ]]; then 
+        if [[ $argument =~ [[:alpha:]] && $argument =~ [[:digit:]] ]]; then 
+            if [[ "$argument" =~ [[:upper:]] ]] && [[ "$argument" =~ [[:lower:]] ]]; then 
                     echo -e "${GREEN}password is good"
                     exit 0
                     
@@ -37,4 +27,21 @@ check_pass(){
     exit 1
     fi
 }
-check_pass password
+
+while getopts "f" options; do
+    case "${options}" in         
+        f)                    
+        read -r firstline<$2 
+        echo $firstline
+        check_pass $firstline;
+        ;;
+        ?)
+        echo "test"
+        check_pass $1
+        ;;
+        
+    esac
+done
+
+
+
