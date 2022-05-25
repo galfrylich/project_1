@@ -1,15 +1,15 @@
 #!/bin/bash    
 
 
-RED='\033[0;31m'
+RED='\033[0;31m' # colors for user output
 GREEN='\033[0;32m'
 
 check_pass(){
-    argument=$1
-    len="${#argument}"
+    argument=$1 # get first argument 
+    len="${#argument}" # get length of argument 
     if [[ $len -ge 10 ]]
     then
-        if [[ $argument =~ [[:alpha:]] && $argument =~ [[:digit:]] ]]; then 
+        if [[$argument =~ [[:digit:]] ]]; then 
             if [[ "$argument" =~ [[:upper:]] ]] && [[ "$argument" =~ [[:lower:]] ]]; then 
                     echo -e "${GREEN}password is good"
                     exit 0
@@ -19,7 +19,7 @@ check_pass(){
                     exit 1
                 fi        
         else 
-            echo -e "${RED}password must Contain both alphabet and number" 
+            echo -e "${RED}password must contain digits" 
             exit 1
         fi       
     else
@@ -28,16 +28,16 @@ check_pass(){
     fi
 }
 
-while getopts "f" options; do
+while getopts "f" options; do # getopts for -f flag 
     case "${options}" in         
         f)                    
-        read -r firstline<$2
-        check_pass $firstline;
+        read -r firstline<$2 # read from file 
+        check_pass $firstline; # execute check password
         ;;
     esac
 done
 
 
-check_pass $1
+check_pass $1 # if no flag go to function with first argument
 
 
