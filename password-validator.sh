@@ -15,15 +15,15 @@ check_pass(){
                     exit 0
                     
             else 
-                    echo -e "${RED}password must include both the small and capital case letters. $?"
+                    echo -e "${RED}password must include both the small and capital case letters."
                     exit 1
                 fi        
         else 
-            echo -e "${RED}password must Contain both alphabet and number $?" 
+            echo -e "${RED}password must Contain both alphabet and number" 
             exit 1
         fi       
     else
-    echo -e "${RED}password must contain minimum of 10 characters $?"
+    echo -e "${RED}password must contain minimum of 10 characters"
     exit 1
     fi
 }
@@ -31,17 +31,13 @@ check_pass(){
 while getopts "f" options; do
     case "${options}" in         
         f)                    
-        read -r firstline<$2 
-        echo $firstline
+        read -r firstline<$2
         check_pass $firstline;
         ;;
-        ?)
-        echo "test"
-        check_pass $1
-        ;;
-        
     esac
 done
 
+
+check_pass $1
 
 
