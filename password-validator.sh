@@ -8,10 +8,10 @@ GREEN='\033[0;32m'
 
 check_pass(){
     
-    if [[ $len -ge 10 ]]
+    if [[ $len -ge 10 ]] #check if password greater than 10
     then
-        if [[ $password =~ [[:alpha:]] && $password =~ [[:digit:]] ]]; then 
-            if [[ "$password" =~ [[:upper:]] ]] && [[ "$password" =~ [[:lower:]] ]]; then 
+        if [[  $password =~ [[:digit:]] ]]; then #check if password with digit.
+            if [[ "$password" =~ [[:upper:]] ]] && [[ "$password" =~ [[:lower:]] ]]; then #check if password with lower and upper case letters.
                     echo -e "${GREEN}password is good"
                     exit 0
                     
@@ -20,7 +20,7 @@ check_pass(){
                     exit 1
                 fi        
         else 
-            echo -e "${RED}password must Contain both alphabet and number " 
+            echo -e "${RED}password must Contain digits" 
             exit 1
         fi       
     else
@@ -28,5 +28,5 @@ check_pass(){
     exit 1
     fi
 }
-#call function with password argument 
+#execute function with password argument 
 check_pass password
