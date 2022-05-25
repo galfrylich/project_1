@@ -1,12 +1,11 @@
 #!/bin/bash    
 
-password=$1
-len="${#password}"
+password=$1 # get first argument
+len="${#password}" # check the length of password
 
-RED='\033[0;31m'
+RED='\033[0;31m' # colors for output for user
 GREEN='\033[0;32m'
 
-jj
 check_pass(){
     
     if [[ $len -ge 10 ]]
@@ -29,4 +28,5 @@ check_pass(){
     exit 1
     fi
 }
+#call function with password argument 
 check_pass password
